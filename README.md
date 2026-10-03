@@ -6,7 +6,7 @@ The site answers the main question immediately — **who is leading right now?**
 
 ## Status
 
-**Website implementation is complete and pushed to `main`. GitHub Pages still needs to be enabled.**
+**Website is live on GitHub Pages and the full browser/social identity asset set is installed.**
 
 Once Pages is enabled from the repository root on `main`, the expected public URL is:
 
@@ -79,7 +79,11 @@ Equal win percentages remain tied unless the family later defines a formal tie-b
 - `app.js` — source-data validation, all derived statistics, standings, chart rendering, history expansion, and interactions.
 - `data/games.json` — canonical season history.
 - `data/README.md` — compact source-data contract.
-- `assets/favicon.svg` — pawn-style site icon.
+- `assets/favicon.svg` + PNG/ICO variants — Safari/browser tab and bookmark identity.
+- `assets/apple-touch-icon.png` — iPhone/iPad Home Screen and bookmark icon.
+- `assets/icon-192.png` / `assets/icon-512.png` + `site.webmanifest` — installable web-app identity.
+- `assets/og-share.png` — 1200×630 Open Graph / iMessage / social share artwork.
+- `assets/safari-pinned-tab.svg` — monochrome Safari pinned-tab mark.
 - `.nojekyll` — tells GitHub Pages to publish the static files directly.
 - `PROJECT_PLAN.md` — original product/design/build contract.
 - `STATUS.md` — current implementation and QA handoff state.

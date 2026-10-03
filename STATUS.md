@@ -6,11 +6,9 @@ Updated: 2026-10-03
 
 The full v1 website is implemented and pushed to `main`.
 
-**Remaining deployment step:** Ben must enable GitHub Pages for `main` / `/(root)` in repository Settings → Pages.
+**Live:** https://llm-i-am.github.io/fam-parcheesi/
 
-Expected public URL after Pages is enabled:
-
-`https://llm-i-am.github.io/fam-parcheesi/`
+Browser/share identity is installed: multi-size favicons, Apple Touch icon, pinned-tab icon, web manifest, and 1200×630 Open Graph artwork for iMessage/social previews.
 
 ## Architecture
 
@@ -20,7 +18,13 @@ Static, dependency-free site:
 - `styles.css`
 - `app.js`
 - `data/games.json`
-- `assets/favicon.svg`
+- `assets/favicon.svg` + raster favicon set
+- `assets/apple-touch-icon.png`
+- `assets/icon-192.png` / `assets/icon-512.png`
+- `assets/og-share.png`
+- `assets/safari-pinned-tab.svg`
+- `favicon.ico`
+- `site.webmanifest`
 - `.nojekyll`
 
 No framework, build tool, database, login, API, analytics dependency, or external chart library is required.
