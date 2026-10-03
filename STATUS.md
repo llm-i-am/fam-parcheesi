@@ -47,7 +47,7 @@ All paths are relative so the app works correctly under the GitHub Pages reposit
 - Explicit explanation that championship percentage is wins divided by games actually played.
 - Stable per-player color/pawn identities.
 - Interactive season chart toggling between championship Win % and cumulative wins.
-- Stats Lab cards for recent hot hand, longest streak, participation, leader changes, busiest month, and current win drought.
+- Stats Lab cards for recent hot hand, longest streak, leader changes, busiest month, and current win drought.
 - Recent-form strip showing the last five winners.
 - Recent game history shown by default with a touch-friendly `Show all games` control.
 - Participant absences displayed in game history.
