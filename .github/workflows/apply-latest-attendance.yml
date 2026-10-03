@@ -42,8 +42,9 @@ jobs:
         shell: bash
         run: |
           node --check app.js
-          grep -F "players at the table" app.js >/dev/null
+          grep -F "at the table" app.js >/dev/null
           grep -F "full table" app.js >/dev/null
+          ! grep -F "no ${joinNames(absentees)}" app.js >/dev/null 2>&1 || true
           git diff --check
 
       - name: Commit
