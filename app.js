@@ -103,11 +103,6 @@
       leadChanges: countLeadChanges(leaderHistory),
       streak: longestWinningStreak(data.games),
       recentFive: data.games.slice(-5),
-      participation: data.players.map(player => ({
-        player,
-        count: totals[player].gamesPlayed,
-        pct: data.games.length ? totals[player].gamesPlayed / data.games.length : 0
-      })),
       latest: data.games.at(-1) || null,
       busyMonth: busiestMonth(data.games),
       drought: longestCurrentDrought(data),
@@ -342,14 +337,6 @@
     $('#streakNote').textContent = derived.streak.length
       ? `${joinNames(derived.streak.players)} ${derived.streak.players.length === 1 ? 'owns' : 'share'} the season high.`
       : 'No streaks yet.';
-
-    const maxParticipation = Math.max(0, ...derived.participation.map(item => item.count));
-    const mostPresent = derived.participation.filter(item => item.count === maxParticipation).map(item => item.player);
-    const allPresent = mostPresent.length === data.players.length;
-    $('#participationValue').textContent = allPresent ? 'Everyone' : (mostPresent.length >= 3 ? `${mostPresent.length} regulars` : joinNames(mostPresent));
-    $('#participationNote').textContent = allPresent
-      ? `Everyone has played all ${data.games.length} games.`
-      : `${joinNames(mostPresent)} ${mostPresent.length === 1 ? 'leads' : 'lead'} attendance at ${maxParticipation}/${data.games.length} games.`;
 
     $('#leadChangeValue').textContent = String(derived.leadChanges);
     $('#leadChangeNote').textContent = derived.leadChanges === 1
