@@ -104,7 +104,7 @@ Verified from the canonical 15-game file:
 - Ben: 4 / 15 = 26.7%
 - Andrew: 3 / 15 = 20.0%
 - Mom: 3 / 15 = 20.0%
-- Nathan: 0 / 10 = 0.0%
+- Nathan: 0 / 9 = 0.0%
 
 ### Browser-level QA
 
