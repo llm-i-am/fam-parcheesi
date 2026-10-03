@@ -1,0 +1,21 @@
+{
+  "season": 2026,
+  "players": ["Ben", "Mom", "Dad", "Andrew", "Nathan"],
+  "games": [
+    {"date":"2026-01-03","winner":"Andrew","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-01-08","winner":"Ben","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-01-31","winner":"Mom","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-03-01","winner":"Mom","participants":["Ben","Mom","Dad","Andrew"]},
+    {"date":"2026-04-18","winner":"Andrew","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-05-23","winner":"Ben","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-05-30","winner":"Dad","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-06-07","winner":"Dad","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-06-20","winner":"Andrew","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-07-26","winner":"Dad","participants":["Ben","Mom","Dad","Andrew"]},
+    {"date":"2026-08-02","winner":"Mom","participants":["Ben","Mom","Dad","Andrew"]},
+    {"date":"2026-08-08","winner":"Dad","participants":["Ben","Mom","Dad","Andrew"]},
+    {"date":"2026-08-29","winner":"Ben","participants":["Ben","Mom","Dad","Andrew"]},
+    {"date":"2026-09-19","winner":"Ben","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-10-03","winner":"Dad","participants":["Ben","Mom","Dad","Andrew","Nathan"]}
+  ]
+}
