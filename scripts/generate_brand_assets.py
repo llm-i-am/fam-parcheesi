@@ -84,7 +84,7 @@ for yy in range(y0+16, y0+bar_h-14, 14):
     d.line([x0+95, yy, x1-95, yy], fill="#d9ccb0", width=5)
 chip = (760, y0+14, 1640, y0+96)
 d.rounded_rectangle(chip, radius=12, fill=C["paper2"], outline=C["ink"], width=6)
-txt = "FAMILY COMPUTER · PARCHEESI.EXE"
+txt = "FROGGER LEAGUE · PARCHEESI.EXE"
 bb = d.textbbox((0, 0), txt, font=font(34))
 d.text(((chip[0]+chip[2]-bb[2])/2, (chip[1]+chip[3]-bb[3])/2-2), txt, font=font(34), fill=C["ink"])
 for xx in [x0+48, x1-48]:
@@ -93,7 +93,7 @@ left = 185
 d.text((left, 260), "FAMILY", font=font(118), fill=C["ink"])
 d.text((left, 390), "PARCHEESI", font=font(170), fill=C["hot"], stroke_width=6, stroke_fill=C["ink"])
 d.text((left, 590), "2026 CHAMPIONSHIP", font=font(54), fill=C["muted"])
-d.text((left, 670), "Five players. One tiny crown.", font=font(48), fill=C["ink"])
+d.text((left, 670), "Five players. One family championship.", font=font(48), fill=C["ink"])
 d.text((left, 728), "An entire year of bragging rights.", font=font(42, False), fill=C["muted"])
 rx0, ry0, rx1, ry1 = 1505, 265, 2180, 760
 d.rounded_rectangle([rx0+14, ry0+16, rx1+14, ry1+16], radius=38, fill=C["ink"])
@@ -121,9 +121,9 @@ og.resize((1200, 630), Image.Resampling.LANCZOS).save(ASSETS / "og-share.png", o
 
 (ASSETS / "safari-pinned-tab.svg").write_text('''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 7a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-8 22h16l4 14 9 5v9H11v-9l9-5 4-14Z"/></svg>\n''')
 manifest = {
-    "name": "Family Parcheesi · 2026 Championship",
+    "name": "Frogger Family Parcheesi League · 2026 Championship",
     "short_name": "Parcheesi",
-    "description": "The family Parcheesi championship: standings, streaks, stats, and the great 2026 race.",
+    "description": "The Frogger Family Parcheesi League: 2026 standings, streaks, stats, and title race.",
     "start_url": "./", "scope": "./", "display": "standalone",
     "background_color": C["paper"], "theme_color": C["hot"],
     "icons": [

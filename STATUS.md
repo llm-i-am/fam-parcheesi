@@ -10,6 +10,13 @@ The full v1 website is implemented and pushed to `main`.
 
 Browser/share identity is installed: multi-size favicons, Apple Touch icon, pinned-tab icon, web manifest, and 1200×630 Open Graph artwork for iMessage/social previews.
 
+
+## League identity and copy direction
+
+The family-world name is **Frogger Family Parcheesi League**, shortened to **Frogger League** in compact UI chrome. References stay deliberately sparse: the faux-Mac title bar, one hero season identifier, and the footer.
+
+Copy direction is now **earnest underneath, playful on top**: treat the championship as a real family institution, while letting the presentation be dramatic, mock-serious, and fun. Humor should come from the grand sports-broadcast treatment, not from diminishing the game or tradition.
+
 ## Architecture
 
 Static, dependency-free site:

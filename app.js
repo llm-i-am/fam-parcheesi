@@ -230,7 +230,7 @@
     $('#leaderDetail').textContent = leaders.length === 1
       ? `${leaders[0].wins} wins · ${formatPct(leaders[0].winPct)} of games played`
       : `${leaders.length}-way tie · ${formatPct(topPct)}`;
-    $('#leaderRibbon').textContent = leaders.length === 1 ? '👑 currently wearing the tiny crown' : '👑 shared tiny crown situation';
+    $('#leaderRibbon').textContent = leaders.length === 1 ? '👑 currently holds the crown' : '👑 the crown is currently shared';
 
     const leaderPawn = $('#leaderPawn');
     leaderPawn.dataset.player = leaders[0]?.player || 'Dad';
@@ -346,7 +346,7 @@
     $('#participationValue').textContent = allPresent ? 'Everyone' : (mostPresent.length >= 3 ? `${mostPresent.length} regulars` : joinNames(mostPresent));
     $('#participationNote').textContent = allPresent
       ? `Everyone has played all ${data.games.length} games.`
-      : `${joinNames(mostPresent)}: ${maxParticipation}/${data.games.length} games. Nathan: ${derived.totals.Nathan.gamesPlayed}/${data.games.length}.`;
+      : `${joinNames(mostPresent)} ${mostPresent.length === 1 ? 'leads' : 'lead'} attendance at ${maxParticipation}/${data.games.length} games.`;
 
     $('#leadChangeValue').textContent = String(derived.leadChanges);
     $('#leadChangeNote').textContent = derived.leadChanges === 1

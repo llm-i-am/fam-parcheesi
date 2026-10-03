@@ -1,7 +1,7 @@
 {
-  "name": "Family Parcheesi \u00b7 2026 Championship",
+  "name": "Frogger Family Parcheesi League \u00b7 2026 Championship",
   "short_name": "Parcheesi",
-  "description": "The family Parcheesi championship: standings, streaks, stats, and the great 2026 race.",
+  "description": "The Frogger Family Parcheesi League: 2026 standings, streaks, stats, and title race.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
