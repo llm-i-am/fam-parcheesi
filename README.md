@@ -34,14 +34,15 @@ Mike is family but does not participate in this weekly Parcheesi competition and
 
 ## Current project state
 
-Foundation/planning only. **The website implementation has intentionally not started yet.**
+Phase 0 foundation is complete. **The website implementation has intentionally not started yet.**
 
 - Repository created as a dedicated public project.
 - Canonical data contract documented under `data/`.
-- The 2026 source history and expected derived standings are specified in `PROJECT_PLAN.md`; the final `data/games.json` history file still needs to be committed before implementation begins.
+- `data/games.json` contains the authoritative 2026 history through October 3, 2026: 15 games total, with explicit participants for every game.
+- The game log derives to the expected baseline: Dad 5/15, Ben 4/15, Andrew 3/15, Mom 3/15, Nathan 0/10.
 - Product, design, data, accessibility, mobile, and implementation decisions are specified in `PROJECT_PLAN.md`.
 - The private GPT Voice workspace contains only a pointer back to this repository so private notes do not leak into the public project.
 
 ## Next step
 
-Read `PROJECT_PLAN.md`, commit the canonical `data/games.json` history, resolve any genuinely blocking question, then implement the static site in one focused build pass without changing the championship rule or rewriting the source data model unless a real issue is discovered.
+Read `PROJECT_PLAN.md` and `data/games.json`, resolve any genuinely blocking question if one appears, then begin Phase 1 implementation of the static site without changing the championship rule or rewriting the source data model unless a real issue is discovered.
