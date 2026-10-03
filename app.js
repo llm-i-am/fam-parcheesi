@@ -238,8 +238,11 @@
 
     if (derived.latest) {
       $('#latestResult').textContent = `${derived.latest.winner} won`;
-      const absentees = data.players.filter(player => !derived.latest.participants.includes(player));
-      $('#latestMeta').textContent = `${formatDate(derived.latest.date)}${absentees.length ? ` · no ${joinNames(absentees)}` : ' · full table'}`;
+      const participantCount = derived.latest.participants.length;
+      const attendanceLabel = participantCount === data.players.length
+        ? 'full table'
+        : `${participantCount} ${plural('player', participantCount)} at the table`;
+      $('#latestMeta').textContent = `${formatDate(derived.latest.date)} · ${attendanceLabel}`;
     } else {
       $('#latestResult').textContent = 'No games yet';
       $('#latestMeta').textContent = 'The board is suspiciously quiet.';
