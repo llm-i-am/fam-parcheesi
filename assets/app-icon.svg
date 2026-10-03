@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Family Parcheesi icon</title>
+  <desc id="desc">A red Parcheesi pawn with a gold sparkle on warm vintage-computer plastic.</desc>
+  <rect width="512" height="512" rx="112" fill="#f2e8cc"/>
+  <rect x="31" y="31" width="450" height="450" rx="92" fill="none" stroke="#1e1a18" stroke-width="23"/>
+  <path d="M72 188c24-69 83-118 161-126 67-7 129 15 173 58" fill="none" stroke="#fff8e8" stroke-width="13" stroke-linecap="round" opacity=".92"/>
+  <circle cx="256" cy="163" r="59" fill="#e54f33" stroke="#1e1a18" stroke-width="23"/>
+  <path d="M202 224h108l26 126 77 48v48H99v-48l77-48 26-126Z" fill="#e54f33" stroke="#1e1a18" stroke-width="23" stroke-linejoin="round"/>
+  <path d="M367 68l10 30 30 10-30 10-10 30-10-30-30-10 30-10 10-30Z" fill="#d89b2d" stroke="#1e1a18" stroke-width="5" stroke-linejoin="round"/>
+</svg>
