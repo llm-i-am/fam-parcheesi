@@ -37,10 +37,11 @@ Mike is family but does not participate in this weekly Parcheesi competition and
 Foundation/planning only. **The website implementation has intentionally not started yet.**
 
 - Repository created as a dedicated public project.
-- 2026 game history captured in `data/games.json`.
+- Canonical data contract documented under `data/`.
+- The 2026 source history and expected derived standings are specified in `PROJECT_PLAN.md`; the final `data/games.json` history file still needs to be committed before implementation begins.
 - Product, design, data, accessibility, mobile, and implementation decisions are specified in `PROJECT_PLAN.md`.
 - The private GPT Voice workspace contains only a pointer back to this repository so private notes do not leak into the public project.
 
 ## Next step
 
-Read `PROJECT_PLAN.md`, resolve any genuinely blocking question, then implement the static site in one focused build pass without changing the championship rule or rewriting the source data model unless a real issue is discovered.
+Read `PROJECT_PLAN.md`, commit the canonical `data/games.json` history, resolve any genuinely blocking question, then implement the static site in one focused build pass without changing the championship rule or rewriting the source data model unless a real issue is discovered.
