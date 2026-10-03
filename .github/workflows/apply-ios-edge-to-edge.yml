@@ -1,0 +1,54 @@
+name: Apply iOS edge-to-edge scrolling
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-ios-edge-to-edge.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove vertical safe-area padding
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('styles.css')
+          text = path.read_text()
+          replacements = {
+              '  --safe-top:max(14px,env(safe-area-inset-top));': '  --safe-top:0px;',
+              '  --safe-bottom:max(28px,env(safe-area-inset-bottom));': '  --safe-bottom:0px;',
+              '.hero-window{margin:4px 0 34px;': '.hero-window{margin:0 0 34px;'
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Expected CSS not found: {old}')
+              text = text.replace(old, new, 1)
+          path.write_text(text)
+          PY
+
+      - name: Validate
+        shell: bash
+        run: |
+          grep -F -- '--safe-top:0px;' styles.css >/dev/null
+          grep -F -- '--safe-bottom:0px;' styles.css >/dev/null
+          grep -F '.hero-window{margin:0 0 34px;' styles.css >/dev/null
+          git diff --check
+
+      - name: Commit
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add styles.css
+          git commit -m "Make iPhone scrolling edge to edge"
+          git push origin HEAD:main
