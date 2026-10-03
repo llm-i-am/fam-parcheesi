@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#f2e8cc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17141b" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="The family Parcheesi championship: standings, streaks, stats, and the great 2026 race.">
+  <title>Family Parcheesi · 2026 Championship</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#standings">Skip to standings</a>
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient-orb ambient-orb-a"></span>
+    <span class="ambient-orb ambient-orb-b"></span>
+    <span class="ambient-grid"></span>
+  </div>
+
+  <main class="page-shell">
+    <header class="hero-window" aria-labelledby="pageTitle">
+      <div class="window-bar" aria-hidden="true">
+        <span class="window-dot"></span>
+        <span class="window-title">FAMILY COMPUTER · PARCHEESI.EXE</span>
+        <span class="window-dot"></span>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-kicker">🐅 2026 FAM PARCHEESI 🐪</div>
+        <h1 id="pageTitle">The family title race,<br><span>beautifully over-serious.</span></h1>
+        <p class="hero-copy">Five players. One tiny crown. An entire year of bragging rights.</p>
+
+        <div class="hero-dashboard" aria-live="polite">
+          <section class="leader-card" id="leaderCard" aria-label="Current championship leader">
+            <div class="leader-eyebrow">CURRENT LEADER</div>
+            <div class="leader-main">
+              <div class="leader-pawn-wrap" aria-hidden="true"><span class="pawn pawn-xl" id="leaderPawn"></span></div>
+              <div>
+                <div class="leader-name skeleton-text" id="leaderName">Loading…</div>
+                <div class="leader-detail skeleton-text" id="leaderDetail">Calculating the family drama</div>
+              </div>
+            </div>
+            <div class="leader-ribbon" id="leaderRibbon">👑 crown status pending</div>
+          </section>
+
+          <section class="latest-card" id="latestCard" aria-label="Latest game result">
+            <div class="latest-label">LATEST GAME</div>
+            <div class="latest-result skeleton-text" id="latestResult">Loading…</div>
+            <div class="latest-meta" id="latestMeta">—</div>
+          </section>
+        </div>
+      </div>
+    </header>
+
+    <section class="scoreboard-section" id="standings" aria-labelledby="standingsTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <div class="eyebrow">CHAMPIONSHIP DESK</div>
+          <h2 id="standingsTitle">Standings</h2>
+        </div>
+        <div class="season-chip" id="seasonChip">2026 · — games</div>
+      </div>
+
+      <div class="formula-note" role="note">
+        <span class="formula-icon" aria-hidden="true">÷</span>
+        <span><strong>Win % = wins ÷ games played.</strong> Missing a game doesn’t hurt your percentage.</span>
+      </div>
+
+      <div class="scoreboard-card retro-panel">
+        <div class="scoreboard-head" aria-hidden="true">
+          <span>RANK / PLAYER</span><span>W</span><span>GP</span><span>WIN %</span>
+        </div>
+        <ol class="standings-list" id="standingsList" aria-label="2026 Parcheesi standings"></ol>
+      </div>
+    </section>
+
+    <section class="race-section" aria-labelledby="raceTitle">
+      <div class="section-heading">
+        <div class="eyebrow">PARCHEESI STATS LAB™</div>
+        <h2 id="raceTitle">The Great 2026 Parcheesi Race</h2>
+        <p>Watch the season wobble, lurch, and somehow become statistically meaningful.</p>
+      </div>
+
+      <div class="chart-window retro-panel">
+        <div class="chart-toolbar">
+          <div class="chart-toggle" role="group" aria-label="Chart metric">
+            <button class="chart-mode is-active" type="button" data-chart-mode="percentage" aria-pressed="true">Win %</button>
+            <button class="chart-mode" type="button" data-chart-mode="wins" aria-pressed="false">Total wins</button>
+          </div>
+          <div class="chart-caption" id="chartCaption">Championship percentage after each game</div>
+        </div>
+        <div class="chart-frame">
+          <svg id="raceChart" class="race-chart" role="img" aria-labelledby="chartTitle chartDesc" viewBox="0 0 720 390" preserveAspectRatio="xMidYMid meet">
+            <title id="chartTitle">2026 Parcheesi championship race</title>
+            <desc id="chartDesc">A line chart showing each family member's championship percentage over the season.</desc>
+          </svg>
+        </div>
+        <div class="chart-legend" id="chartLegend" aria-label="Player legend"></div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-labelledby="statsTitle">
+      <div class="section-heading">
+        <div class="eyebrow">THE COMPUTER HAS OPINIONS</div>
+        <h2 id="statsTitle">Stats Lab</h2>
+      </div>
+
+      <div class="stats-grid" id="statsGrid">
+        <article class="stat-card stat-card-feature" id="hotHandCard">
+          <div class="stat-icon" aria-hidden="true">🔥</div>
+          <div class="stat-label">HOT HAND</div>
+          <div class="stat-value" id="hotHandValue">—</div>
+          <div class="stat-note" id="hotHandNote">Loading recent form…</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">⚡</div>
+          <div class="stat-label">LONGEST STREAK</div>
+          <div class="stat-value" id="streakValue">—</div>
+          <div class="stat-note" id="streakNote">Loading streak lore…</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">🗓</div>
+          <div class="stat-label">MOST PRESENT</div>
+          <div class="stat-value" id="participationValue">—</div>
+          <div class="stat-note" id="participationNote">Loading attendance…</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">🔀</div>
+          <div class="stat-label">LEAD CHANGES</div>
+          <div class="stat-value" id="leadChangeValue">—</div>
+          <div class="stat-note" id="leadChangeNote">Loading championship turbulence…</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">📅</div>
+          <div class="stat-label">BUSIEST MONTH</div>
+          <div class="stat-value" id="busyMonthValue">—</div>
+          <div class="stat-note" id="busyMonthNote">Loading calendar chaos…</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon" aria-hidden="true">🕰</div>
+          <div class="stat-label">LONGEST DROUGHT</div>
+          <div class="stat-value" id="droughtValue">—</div>
+          <div class="stat-note" id="droughtNote">Loading the dry spell report…</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="form-section" aria-labelledby="formTitle">
+      <div class="section-heading">
+        <div class="eyebrow">LAST FIVE</div>
+        <h2 id="formTitle">Recent Form</h2>
+      </div>
+      <div class="form-strip retro-panel" id="recentForm" aria-label="Winners of the five most recent games"></div>
+    </section>
+
+    <section class="history-section" aria-labelledby="historyTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <div class="eyebrow">ARCHIVES</div>
+          <h2 id="historyTitle">Game History</h2>
+        </div>
+        <button class="history-toggle" id="historyToggle" type="button" aria-expanded="false" aria-controls="historyList">Show all games</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-mark" aria-hidden="true"><span class="pawn pawn-mini"></span></div>
+      <div>
+        <strong>Family Parcheesi · 2026</strong>
+        <span>Handcrafted for excessive statistical analysis of a perfectly normal board game.</span>
+      </div>
+    </footer>
+  </main>
+
+  <noscript>
+    <div class="noscript-banner">This scoreboard needs JavaScript to calculate the season standings from the game log.</div>
+  </noscript>
+</body>
+</html>
