@@ -41,12 +41,16 @@
   function validateData(data) {
     if (!data || !Number.isInteger(data.season)) throw new Error('Season must be an integer.');
     if (!Array.isArray(data.players) || data.players.length === 0) throw new Error('Players must be a non-empty array.');
+    if (data.players.some(player => typeof player !== 'string' || !player.trim())) throw new Error('Every player must have a non-empty name.');
     if (new Set(data.players).size !== data.players.length) throw new Error('Players must be unique.');
     if (!Array.isArray(data.games)) throw new Error('Games must be an array.');
 
     let previousDate = '';
     for (const [index, game] of data.games.entries()) {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(game.date)) throw new Error(`Game ${index + 1} has an invalid date.`);
+      const parsedDate = new Date(`${game.date}T00:00:00Z`);
+      if (Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== game.date) throw new Error(`Game ${index + 1} has an impossible calendar date.`);
+      if (!game.date.startsWith(`${data.season}-`)) throw new Error(`Game ${index + 1} is outside the ${data.season} season.`);
       if (game.date < previousDate) throw new Error('Games must be sorted chronologically.');
       previousDate = game.date;
       if (!data.players.includes(game.winner)) throw new Error(`Unknown winner in game ${index + 1}.`);
@@ -105,8 +109,7 @@
       recentFive: data.games.slice(-5),
       latest: data.games.at(-1) || null,
       busyMonth: busiestMonth(data.games),
-      drought: longestCurrentDrought(data),
-      lastWin: Object.fromEntries(data.players.map(player => [player, latestWin(data.games, player)]))
+      drought: currentDrought(data)
     };
   }
 
@@ -180,7 +183,7 @@
     return { count: max, months };
   }
 
-  function longestCurrentDrought(data) {
+  function currentDrought(data) {
     const result = data.players.map(player => {
       const appearances = data.games.filter(game => game.participants.includes(player));
       let lastWinAppearance = -1;
@@ -193,12 +196,6 @@
     return result.sort((a, b) => b.gamesSince - a.gamesSince || a.player.localeCompare(b.player))[0] || null;
   }
 
-  function latestWin(games, player) {
-    for (let i = games.length - 1; i >= 0; i -= 1) {
-      if (games[i].winner === player) return games[i];
-    }
-    return null;
-  }
 
   function nearlyEqual(a, b) {
     return Math.abs(a - b) < 1e-9;
@@ -220,7 +217,7 @@
     const leaders = derived.standings.filter(entry => nearlyEqual(entry.winPct, topPct));
     const leaderName = leaders.length === 1 ? leaders[0].player : leaders.map(entry => entry.player).join(' + ');
 
-    $('#seasonChip').textContent = `${data.season} · ${data.games.length} games`;
+    $('#seasonChip').textContent = `${data.season} · ${data.games.length} ${plural('game', data.games.length)}`;
     $('#leaderName').textContent = leaderName;
     $('#leaderDetail').textContent = leaders.length === 1
       ? `${leaders[0].wins} wins · ${formatPct(leaders[0].winPct)} of games played`
@@ -246,6 +243,7 @@
 
   function renderStandings() {
     const list = $('#standingsList');
+    list.setAttribute('aria-label', `${state.data.season} Parcheesi standings`);
     list.innerHTML = state.derived.standings.map((entry, index, standings) => {
       const next = standings[index + 1];
       const prev = standings[index - 1];
@@ -306,8 +304,8 @@
     });
 
     svg.innerHTML = `
-      <title id="chartTitle">2026 Parcheesi ${mode === 'percentage' ? 'championship percentage' : 'cumulative wins'} race</title>
-      <desc id="chartDesc">A line chart showing ${mode === 'percentage' ? 'win percentage among games played' : 'cumulative wins'} for Ben, Mom, Dad, Andrew, and Nathan across the 2026 season.</desc>
+      <title id="chartTitle">${data.season} Parcheesi ${mode === 'percentage' ? 'championship percentage' : 'cumulative wins'} race</title>
+      <desc id="chartDesc">A line chart showing ${mode === 'percentage' ? 'win percentage among games played' : 'cumulative wins'} for ${escapeHtml(data.players.join(', '))} across the ${data.season} season.</desc>
       ${fragments.join('')}
     `;
 
@@ -330,7 +328,7 @@
 
     $('#hotHandValue').textContent = hotPlayers.length ? joinNames(hotPlayers) : 'Nobody';
     $('#hotHandNote').textContent = recentMax
-      ? `${recentMax} ${plural('win', recentMax)} in the last ${derived.recentFive.length} games.`
+      ? `${recentMax} ${plural('win', recentMax)} in the last ${derived.recentFive.length} ${plural('game', derived.recentFive.length)}.`
       : 'The computer detects no heat whatsoever.';
 
     $('#streakValue').textContent = `${derived.streak.length} ${plural('game', derived.streak.length)}`;
