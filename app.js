@@ -229,6 +229,7 @@
     leaderPawn.parentElement.dataset.player = leaders[0]?.player || 'Dad';
 
     if (derived.latest) {
+      $('#latestCard').dataset.player = derived.latest.winner;
       $('#latestResult').textContent = `${derived.latest.winner} won`;
       const participantCount = derived.latest.participants.length;
       const attendanceLabel = participantCount === data.players.length
@@ -236,6 +237,7 @@
         : `${participantCount} ${plural('player', participantCount)} at the table`;
       $('#latestMeta').textContent = `${formatDate(derived.latest.date)} · ${attendanceLabel}`;
     } else {
+      delete $('#latestCard').dataset.player;
       $('#latestResult').textContent = 'No games yet';
       $('#latestMeta').textContent = 'The board is suspiciously quiet.';
     }
