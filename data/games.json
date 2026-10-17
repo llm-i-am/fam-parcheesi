@@ -17,6 +17,7 @@
     {"date":"2026-08-29","winner":"Ben","participants":["Ben","Mom","Dad","Andrew"]},
     {"date":"2026-09-19","winner":"Ben","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
     {"date":"2026-10-03","winner":"Dad","participants":["Ben","Mom","Dad","Andrew"]},
-    {"date":"2026-10-10","winner":"Andrew","participants":["Ben","Mom","Dad","Andrew","Nathan"]}
+    {"date":"2026-10-10","winner":"Andrew","participants":["Ben","Mom","Dad","Andrew","Nathan"]},
+    {"date":"2026-10-17","winner":"Ben","participants":["Ben","Mom","Dad","Andrew","Nathan"]}
   ]
 }
